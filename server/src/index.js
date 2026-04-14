@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const cors = require('cors');
 
@@ -21,6 +22,12 @@ app.use('/api/attendance', attendanceRoutes);
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' });
+});
+
+const clientBuild = path.join(__dirname, '..', '..', 'client', 'build');
+app.use(express.static(clientBuild));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(clientBuild, 'index.html'));
 });
 
 app.listen(PORT, () => {
