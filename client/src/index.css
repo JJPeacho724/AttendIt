@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0a0a;
+  --fg: #fafafa;
+  --surface: #111;
+  --dim: #333;
+  --muted: #666;
+  --border: #1a1a1a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  color-scheme: dark;
+}
+
+/* Leaflet dark overrides */
+.leaflet-container {
+  background: #0a0a0a !important;
+}
+.leaflet-tile {
+  filter: invert(1) hue-rotate(180deg) brightness(0.8) contrast(1.1);
+}
+.leaflet-control-zoom a {
+  background: #111 !important;
+  color: rgba(255,255,255,0.6) !important;
+  border-color: #1a1a1a !important;
+}
+.leaflet-control-attribution {
+  background: rgba(10,10,10,0.8) !important;
+  color: rgba(255,255,255,0.2) !important;
+  font-size: 8px !important;
+}
+.leaflet-control-attribution a {
+  color: rgba(255,255,255,0.3) !important;
+}
