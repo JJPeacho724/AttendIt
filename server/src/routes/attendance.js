@@ -27,15 +27,6 @@ router.post('/checkin', authenticate, requireRole('attendee'), (req, res) => {
     return res.status(404).json({ error: 'No active session found with this code. It may have expired.' });
   }
 
-  // Check attendee is registered
-  const registered = db.prepare(
-    'SELECT id FROM registrations WHERE attendee_id = ? AND event_id = ?'
-  ).get(req.user.id, session.event_id);
-
-  if (!registered) {
-    return res.status(403).json({ error: 'You are not registered for this event' });
-  }
-
   // Check not already checked in
   const existing = db.prepare(
     'SELECT id FROM attendance WHERE session_id = ? AND attendee_id = ?'
